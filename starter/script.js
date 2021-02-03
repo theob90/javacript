@@ -17,21 +17,39 @@
 // console.log(yearToRetirement(1990, `theo`));
 
 
-function cutFruitPieces(fruit){
-    return fruit * 4;
+// function cutFruitPieces(fruit){
+//     return fruit * 4;
+// }
+
+// function fruitProccess(apples,oranges){
+
+//     const applePieces = cutFruitPieces(apples);
+//     const orangePieces = cutFruitPieces(oranges);
+
+//     const juice= `juice with ${applePieces} pieces of apple and ${orangePieces} pieces of orange`;
+//     return juice;
+
+// }
+
+// console.log(fruitProccess(2,3));
+
+const  calcAge = function (birthYear){
+    return 2021 - birthYear;
+} 
+
+const yearToRetirement = function (birthYear, firstName)  {
+    const age = calcAge(birthYear);
+    const retirement = 65 - age;
+
+    if(retirement> 0){
+        return `${firstName} retires in ${retirement}  years`;
+
+    }else{
+        return `already retired`;
+    }
+
+    // return retirement;
 }
 
-function fruitProccess(apples,oranges){
-
-    const applePieces = cutFruitPieces(apples);
-    const orangePieces = cutFruitPieces(oranges);
-
-    const juice= `juice with ${applePieces} pieces of apple and ${orangePieces} pieces of orange`;
-    return juice;
-
-}
-
-console.log(fruitProccess(2,3));
-
-
-
+console.log(yearToRetirement(1990, `theo`));
+console.log(yearToRetirement(1950, `theo`));
