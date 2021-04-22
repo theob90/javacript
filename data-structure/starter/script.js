@@ -244,3 +244,125 @@ const days = ['mon','tuesday','wed', 'thursday', 'friday','sat'];
 
  console.log(restaurant.order?.(0,1) ?? 'Method does not exist');
  console.log(restaurant.orderasasd?.(0,1) ?? 'Method does not exist');
+
+
+ //looping over property names...keys
+
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+console.log(`we are open on ${properties.length}`);
+
+ for (const day of Object.keys(openingHours)){
+   console.log(day);
+ }
+
+ let openStr = `We are open on ${properties.length} days
+ :`;
+
+ for (const opndays of properties){
+   openStr +=`${opndays} `;
+ }
+console.log(openStr);
+
+
+// property valus
+
+const values = Object.values(openingHours)
+console.log(values);
+
+const entries = Object.entries(openingHours);
+
+//console.log(entries);
+
+for ( const [key, {open, close}] of entries){
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+
+//test
+
+for (const [i, player] of game.scored.entries()){
+  console.log(`goal ${i +1}: ${player}`);
+}
+
+let average=0;
+for (const odd of Object.values(game.odds)){
+  average += odd;
+  average/= Object.values(game.odds).length;
+  console.log(average);
+}
+
+// sets
+
+const ordersSet = new Set ([
+  'pasta',
+  'Pizza',
+  'Rissote',
+  'pasta',
+  'pizzetti',
+  'mmprokolo'
+]);
+
+console.log(ordersSet);
+
+console.log(new Set('Jonas'));
+
+console.log(ordersSet.size);
+console.log(ordersSet.has('Pizza'));
+ordersSet.add('Garlis Bread');
+console.log(ordersSet);
+ordersSet.delete('Garlis Bread');
+console.log(ordersSet);
+
+
+for (const order of ordersSet) console.log(order);
+
+//example
+
+const staff = [
+  'waiter',
+  'chef',
+  'waiter',
+  'manager',
+  'chef',
+  'waiter'
+];
+
+
+const staffUnique = [...new Set (staff)];
+console.log(staffUnique);
+
+// MAP
+
+const rest = new Map ();
+//add values 
+
+rest.set('name', 'Classico');
+rest.set (1, 'firense');
+rest.set(2, 'Athens');
+console.log(rest);
+
+rest.set('categories', ['Italian', 'Pizzeria', 'Vegeterian','Organic'])
+.set('open', 11)
+.set('close', 23)
+.set(true,'we are open');
+
+console.log(rest.get('name'));
+console.log(rest.get(true));
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time< rest.get('close')));
+
+console.log(rest.has('organic'));
+rest.delete(2);
+console.log(rest);
+
+rest.set([1,2], 'Test');
+// tha gurisei undefined
+console.log(rest);
+
+// prepei na ftiaksw ena const array[1,2]
+// kai na valw t array san key
+
+// mporw na valw kai obj san key
+rest.set(document.querySelector('h1'), 'Heading');
