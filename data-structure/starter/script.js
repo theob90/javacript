@@ -366,3 +366,26 @@ console.log(rest);
 
 // mporw na valw kai obj san key
 rest.set(document.querySelector('h1'), 'Heading');
+
+// make map xwris set
+
+const question = new Map ([
+  ['question', 'What is the best progr language'],
+  [1,'C'],
+  [2, 'Java'],
+  [3, 'Javascript'],
+  ['correct', 3],
+  [true,'COREECT'],
+  [false, 'TRY AGAIN'],
+]);
+
+console.log(question);
+//print map
+for (const [key, value] of question){
+  if(typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+
+const answer = Number(prompt('Your answer'));
+console.log(answer);
+
+console.log(question.get(question.get('correct') === answer));
