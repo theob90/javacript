@@ -91,10 +91,19 @@ const greet = function(greeting){
     };
 };
 
+//to greeterHey anaferetai st eswteriko function.
 const greeterHey = greet('hey');
 
 greeterHey('theo');
 
+const tax = function(rate){
+    return function(value){
+        return value + value * rate;
+    };
+};
+
+const rates = tax(0.1);
+console.log(rates(200));
 
 //============//
 
@@ -168,3 +177,48 @@ bookEw(31, 'Jijel');
  document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane);
 // gia na deiksw to object lufthansa tha balw bind
 document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+
+//partial application
+
+const addTax = (rate, value) => value + value * rate;
+
+console.log(addTax(0.10, 200));
+// vszw null giati de xreiazetai na deiksw opws st alla calls, den exw this.
+const addVAT = addTax.bind(null, 0.23);
+
+console.log(addVAT(100));
+
+
+const poll = {
+    question: 'what is your fav programming language',
+    options: ['0: Javascript', '1: Java', '2: Python', '3: c++'],
+    answers: new Array(4).fill (0),
+    registerNewAnswer(){
+        const answer = Number(prompt(`${this.question}\n
+        ${this.options.join('\n')}\n
+        (write option number)`));
+        console.log(answer);
+
+        //Register answer
+
+        // an einai true ta 2 prwta && tha ginei to 3o.
+        typeof answer === 'number' && answer < 
+        this.answers.length && this.answers[answer]++;
+        //to displayresults  kaleite meta to method pou grafw parakatw
+        this.displayResults();
+        this.displayResults('string');
+    },
+    //type = array, vazei san default t array
+    displayResults(type = 'array'){
+        if(type === 'array'){
+            console.log(this.answers);
+        }else if (type === 'string'){
+            console.log(`Poll resultd are ${this.answers.join(', ')}`);
+        }
+    }
+};
+
+//poll.registerNewAnswer();
+// bazw bind poll giati to this tha deiksei st button enw thelw n deiksei st obj
+document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
