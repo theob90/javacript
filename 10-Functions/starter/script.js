@@ -222,3 +222,44 @@ const poll = {
 //poll.registerNewAnswer();
 // bazw bind poll giati to this tha deiksei st button enw thelw n deiksei st obj
 document.querySelector('.poll').addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+
+
+//mono tou to displayResults tha eixe ena this to opoio tha edeixne sto this.answers
+// vazwntas to call mporoume na tou allaksoume to this kai na t valoume oti theloume, px to pinaka pou theloume emeis
+
+poll.displayResults.call({answers: [4,5,6]});
+
+
+
+//immediate evoke functions. functions pou theloume na trxoun mia fora
+
+// tha trexei oso ti fwnazoume
+const runOnce = function() {
+    console.log('run once');
+};
+
+//tha treksei mia fora mono
+(function(){
+    console.log('Auto tha treksei mia fora mono');
+
+})();
+(() => console.log('k auto tha treksei mia fora mono '))();
+
+
+
+// closures
+
+const secureBooking = function (){
+    let passangerCount = 0;
+
+    return function(){
+        passangerCount ++;
+        console.log(`${passangerCount} passangers`);
+    };
+};
+
+const booker = secureBooking();
+
+booker();
+booker();
