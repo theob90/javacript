@@ -66,22 +66,54 @@ car1.accelarate();
 
 car1.brake();
 
+// es6 classes
+
 class PersonCL {
-    constructor(firstName, birthYear){
-        this.firstName = firstName;
+    constructor(fullName, birthYear){
+        this.fullName =fullName;
         this.birthYear = birthYear;
     }
 
     calcAge(){
         console.log(2040 - this.birthYear);
     }
+
+    set fullName(name){
+        if(name.includes(' ')) this._fullName = name;//t _ t vazw gia na apofugw to conflict tou full name edw me t fullanem t constructor
+        else alert(`${name} is not a full name`)
+    }
+
+    //vaz ena getter giati xanetai to fullname (exw _fullname)
+    get fullName(){
+        return this._fullName;
+    }
 }
 
 
-const jessica = new PersonCL('jes', 1985);
+const jessica = new PersonCL('jesb v', 1985);
 console.log(jessica);
 jessica.calcAge();
 
+/// GETTERS AND SETTER
+
+
+const account = {
+    owner : 'theo',
+    movement : [200,400,543,634],
+
+    get latest(){
+        return this.movement.slice(-1).pop(); // pop gia na min girisei pinaka
+    },
+
+    set latest(mov){
+        this.movement.push(mov);
+    },
+
+};
+
+console.log(account.latest);
+account.latest = 50;
+console.log(account.movement);
  
 
 
